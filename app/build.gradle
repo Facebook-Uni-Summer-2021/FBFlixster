@@ -8,7 +8,8 @@ android {
 
     defaultConfig {
         applicationId "com.example.fbflixster"
-        minSdkVersion 16
+        //Increased from 16 due to error; keep an eye out for any errors
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -36,4 +37,7 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //Async HTTP Client for communicating through network/internet
+    implementation 'com.codepath.libraries:asynchttpclient:2.0.0'
 }
