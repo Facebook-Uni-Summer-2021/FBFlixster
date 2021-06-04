@@ -1,18 +1,22 @@
 package com.example.fbflixster;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
 
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.example.fbflixster.adapters.MovieAdapter;
 import com.example.fbflixster.models.Movie;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Headers;
@@ -50,6 +54,16 @@ public class MainActivity extends AppCompatActivity {
         // connection (network connection has variable time and
         // cannot be predicted); once async is run, code moves on
         AsyncHttpClient client = new AsyncHttpClient();
+        RecyclerView rvMovies = findViewById(R.id.rvMovies);
+        movies = new ArrayList<>();
+
+        //Create adapter
+        MovieAdapter adapter = new MovieAdapter(this, movies);
+        //Set adapter on RecyclerView
+        rvMovies.setAdapter(adapter);
+        //Set LayoutManager to tell RV how to layout views on screen
+        rvMovies.setLayoutManager(new LinearLayoutManager(this));
+
         //We know this String is JSON, so we use JSON handler
         client.get(NOW_PLAYING_URL, new JsonHttpResponseHandler() {
             @Override
@@ -66,7 +80,10 @@ public class MainActivity extends AppCompatActivity {
                             jsonObject.getJSONArray("results");
                     Log.i(TAG, "Results: " + results.toString());
                     //Convert JSON object's results to list of movies
-                    movies = Movie.fromJsonArray(results);
+                    //movies = Movie.fromJsonArray(results);
+                    //Use currently created items list
+                    movies.addAll(Movie.fromJsonArray(results));
+                    adapter.notifyDataSetChanged();
                     Log.i(TAG, "Movies: " + movies.size());
                 } catch (JSONException e) {
                     //Name may be incorrect, so catch exception

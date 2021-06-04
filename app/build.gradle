@@ -40,4 +40,9 @@ dependencies {
 
     //Async HTTP Client for communicating through network/internet
     implementation 'com.codepath.libraries:asynchttpclient:2.0.0'
+
+    //Glide for images
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    // Glide v4 uses this new annotation processor -- see https://bumptech.github.io/glide/doc/generatedapi.html
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 }
