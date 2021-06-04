@@ -1,6 +1,7 @@
 package com.example.fbflixster.adapters;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -95,8 +96,20 @@ public class MovieAdapter extends
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
 
+            String imageURL;
+
+            //if phone in landscape
+            if (context.getResources().getConfiguration().orientation ==
+                    Configuration.ORIENTATION_LANDSCAPE) {
+                //imageURL = backdrop
+                imageURL = movie.getBackdropPath();
+            } else {
+                //imageURL = poster
+                imageURL = movie.getPosterPath();
+            }
+
             //Create images using Glide
-            Glide.with(context).load(movie.getPosterPath()).into(ivPoster);
+            Glide.with(context).load(imageURL).into(ivPoster);
 
         }
     }

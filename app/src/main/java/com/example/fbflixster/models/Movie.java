@@ -11,6 +11,7 @@ import java.util.List;
 //Model represents an object
 public class Movie {
     String posterPath;
+    String backdropPath;
     String title;
     String overview;
 
@@ -18,6 +19,7 @@ public class Movie {
     public Movie (JSONObject jsonObject) throws JSONException {
         //For JSONs, ensure to type LETTER FOR LETTER for correct keys
         posterPath = jsonObject.getString("poster_path");
+        backdropPath = jsonObject.getString("backdrop_path");
         title = jsonObject.getString("title");
         overview = jsonObject.getString("overview");
     }
@@ -43,6 +45,10 @@ public class Movie {
         //https://api.themoviedb.org/3/configuration?api_key=NOW_PLAYING_URL
         return String.format("https://image.tmdb.org/t/p/w342/%s",
                 posterPath);
+    }
+
+    public String getBackdropPath() {
+        return String.format("https://image.tmdb.org/t/p/w342/%s", backdropPath);
     }
 
     public String getTitle() {
