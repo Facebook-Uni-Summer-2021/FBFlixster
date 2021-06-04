@@ -12,7 +12,7 @@ The following **required** functionality is completed:
 * [ ] Display a nice default [placeholder graphic](https://guides.codepath.org/android/Displaying-Images-with-the-Glide-Library#advanced-usage) for each image during loading
 * [x] For each movie displayed, user can see the following details:
   * [x] Title, Poster Image, Overview (Portrait mode)
-  * [ ] Title, Backdrop Image, Overview (Landscape mode)
+  * [x] Title, Backdrop Image, Overview (Landscape mode)
 * [ ] Allow user to view details of the movie including ratings within a separate activity (video on top, similar layout to mainactivity)
 
 The following **stretch** features are implemented:
