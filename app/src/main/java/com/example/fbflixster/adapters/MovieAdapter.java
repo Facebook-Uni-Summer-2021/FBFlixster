@@ -95,6 +95,10 @@ public class MovieAdapter extends
         public void bind(Movie movie) {
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
+            //QUESTION: where does this go?
+            Glide.with(context).
+                    load("http://via.placeholder.com/300.png").
+                    into(ivPoster);
 
             String imageURL;
 
