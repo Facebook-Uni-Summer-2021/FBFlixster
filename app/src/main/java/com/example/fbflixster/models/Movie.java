@@ -3,17 +3,32 @@ package com.example.fbflixster.models;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //To create folder, right-click->New->Package
 //Model represents an object
+//Identify this model as Parcel
+@Parcel
 public class Movie {
+    //Make private TAG to test
+
+    public static final String MOVIE_OBJECT = "movie_object";
+
     String posterPath;
     String backdropPath;
     String title;
     String overview;
+    int popularity;
+    String release_date;
+    int vote_average;
+    int vote_count;
+    int id;
+
+    //Required for Parceler
+    public Movie () {}
 
     //Constructor to take JSON Object and return Movie object
     public Movie (JSONObject jsonObject) throws JSONException {
@@ -22,6 +37,11 @@ public class Movie {
         backdropPath = jsonObject.getString("backdrop_path");
         title = jsonObject.getString("title");
         overview = jsonObject.getString("overview");
+        popularity = jsonObject.getInt("popularity");
+        release_date = jsonObject.getString("release_date");
+        vote_average = jsonObject.getInt("vote_average");
+        vote_count = jsonObject.getInt("vote_count");
+        id = jsonObject.getInt("id");
     }
 
     //Constructs movie for each JSON array (movie API indicates a
@@ -57,5 +77,25 @@ public class Movie {
 
     public String getOverview() {
         return overview;
+    }
+
+    public int getPopularity() {
+        return popularity;
+    }
+
+    public String getRelease_date() {
+        return release_date;
+    }
+
+    public int getVote_average() {
+        return vote_average;
+    }
+
+    public int getVote_count() {
+        return vote_count;
+    }
+
+    public int getId() {
+        return id;
     }
 }

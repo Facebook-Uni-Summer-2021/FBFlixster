@@ -8,7 +8,8 @@ If it does not appear, go into Project instead of Android in Project tab on left
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:id="@+id/rlContainer">
     <!--Might need to change padding/margin on RelativeLayout-->
 
     <ImageView

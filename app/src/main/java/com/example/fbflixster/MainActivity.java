@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
      */
     //This may need to be secret, check Hints in Week 1 Day 2
     private static final String TAG = "MainActivity";
-    public static final String NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=2ab073f81ddbdbac6fe1df61563b9614";
+    public static String NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=";
 
     List<Movie> movies;
 
@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         RecyclerView rvMovies = findViewById(R.id.rvMovies);
         movies = new ArrayList<>();
+        NOW_PLAYING_URL = NOW_PLAYING_URL + getString(R.string.movie_api_key);
+
 
         //Create adapter
         MovieAdapter adapter = new MovieAdapter(this, movies);

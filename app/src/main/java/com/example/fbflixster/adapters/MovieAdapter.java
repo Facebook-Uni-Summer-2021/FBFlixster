@@ -1,20 +1,25 @@
 package com.example.fbflixster.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.fbflixster.MovieActivity;
 import com.example.fbflixster.R;
 import com.example.fbflixster.models.Movie;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -83,6 +88,7 @@ public class MovieAdapter extends
         TextView tvTitle;
         TextView tvOverview;
         ImageView ivPoster;
+        RelativeLayout rlContainer;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -90,6 +96,7 @@ public class MovieAdapter extends
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
+            rlContainer = itemView.findViewById(R.id.rlContainer);
         }
 
         public void bind(Movie movie) {
@@ -114,6 +121,22 @@ public class MovieAdapter extends
 
             //Create images using Glide
             Glide.with(context).load(imageURL).into(ivPoster);
+
+            rlContainer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Create detailed activity of movie
+                    //Requires previous class, not adapter class, so use context
+                    Intent intent = new Intent(context, MovieActivity.class);
+                    //Requires Parceler to pass on Movie model; see Movie model for
+                    // changes required for Parceler
+                    intent.putExtra(Movie.MOVIE_OBJECT, Parcels.wrap(movie));
+
+                    //Requires context to start new activity, since we are in adapter
+                    context.startActivity(intent);
+                }
+            });
+
 
         }
     }
