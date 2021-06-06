@@ -21,10 +21,10 @@ public class Movie {
     String backdropPath;
     String title;
     String overview;
-    int popularity;
+    float popularity;
     String release_date;
-    int vote_average;
-    int vote_count;
+    float vote_average;
+    float vote_count;
     int id;
 
     //Required for Parceler
@@ -79,7 +79,7 @@ public class Movie {
         return overview;
     }
 
-    public int getPopularity() {
+    public float getPopularity() {
         return popularity;
     }
 
@@ -87,11 +87,11 @@ public class Movie {
         return release_date;
     }
 
-    public int getVote_average() {
+    public float getVote_average() {
         return vote_average;
     }
 
-    public int getVote_count() {
+    public float getVote_count() {
         return vote_count;
     }
 

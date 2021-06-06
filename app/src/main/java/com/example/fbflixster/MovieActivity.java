@@ -4,7 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.fbflixster.models.Movie;
@@ -35,6 +39,12 @@ public class MovieActivity extends YouTubeBaseActivity {
     Movie movie;
     List<Video> videos;
     String videoId = "xxxx";//Set a placeholder
+
+    RatingBar rbMovieRating;
+    TextView tvDetailedTitle;
+    TextView tvDetailedOverview;
+    TextView tvRelease;
+    ImageView ivDetailedPoster;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,8 +126,21 @@ public class MovieActivity extends YouTubeBaseActivity {
         });
 
         //Perform other binding for detailed view
+        rbMovieRating = findViewById(R.id.rbMovieRating);
+        tvDetailedTitle = findViewById(R.id.tvDetailedTitle);
+        tvDetailedOverview = findViewById(R.id.tvDetailedOverview);
+        ivDetailedPoster = findViewById(R.id.ivDetailedPoster);
+        tvRelease = findViewById(R.id.tvRelease);
+        //Glide
+        Glide.with(this).
+                load("http://via.placeholder.com/300.png").
+                into(ivDetailedPoster);
 
-
-
+        tvDetailedTitle.setText(movie.getTitle());
+        tvDetailedOverview.setText(movie.getOverview());
+        tvRelease.setText("Release date: " + movie.getRelease_date());
+        Glide.with(this).load(movie.getPosterPath()).into(ivDetailedPoster);
+        Log.i(TAG, "Rating: " + movie.getVote_average());
+        rbMovieRating.setRating(movie.getVote_average());
     }
 }

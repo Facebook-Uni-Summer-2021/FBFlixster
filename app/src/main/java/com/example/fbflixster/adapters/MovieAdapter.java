@@ -3,6 +3,7 @@ package com.example.fbflixster.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -101,6 +102,10 @@ public class MovieAdapter extends
 
         public void bind(Movie movie) {
             tvTitle.setText(movie.getTitle());
+            if (movie.getVote_average() >= 6) {
+                tvTitle.setTextColor(Color.parseColor("#F0EA28"));
+            }
+
             tvOverview.setText(movie.getOverview());
             //QUESTION: where does this go?
             Glide.with(context).
