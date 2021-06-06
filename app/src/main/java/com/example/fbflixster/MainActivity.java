@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
      */
     //This may need to be secret, check Hints in Week 1 Day 2
     private static final String TAG = "MainActivity";
-    public static String NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=";
+    public static String NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=";//2ab073f81ddbdbac6fe1df61563b9614
 
     List<Movie> movies;
 
@@ -56,8 +56,9 @@ public class MainActivity extends AppCompatActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         RecyclerView rvMovies = findViewById(R.id.rvMovies);
         movies = new ArrayList<>();
-        NOW_PLAYING_URL = NOW_PLAYING_URL + getString(R.string.movie_api_key);
 
+        //Originally, I combined the playing url with API key here; an error occurred
+        // when rotating that the API key was not valid
 
         //Create adapter
         MovieAdapter adapter = new MovieAdapter(this, movies);
@@ -67,7 +68,9 @@ public class MainActivity extends AppCompatActivity {
         rvMovies.setLayoutManager(new LinearLayoutManager(this));
 
         //We know this String is JSON, so we use JSON handler
-        client.get(NOW_PLAYING_URL, new JsonHttpResponseHandler() {
+        //A BUG: When creating a secret xml, the Async has problems getting the combined
+        // version of the NOW_PLAYING_URL + getString() if not contained in client call
+        client.get(NOW_PLAYING_URL + getString(R.string.movie_api_key), new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int i, Headers headers, JSON json) {
                 //When successful connection to Json
@@ -96,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(int i, Headers headers, String s, Throwable throwable) {
                 //When failed connection to Json
-                Log.d(TAG, "onFailure");
+                Log.d(TAG, "onFailure: " + s);
             }
         });
     }

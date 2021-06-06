@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.fbflixster.MovieActivity;
 import com.example.fbflixster.R;
 import com.example.fbflixster.models.Movie;
@@ -23,6 +24,8 @@ import com.example.fbflixster.models.Movie;
 import org.parceler.Parcels;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 /*
 The following are steps to creating an adapter:
@@ -124,8 +127,18 @@ public class MovieAdapter extends
                 imageURL = movie.getPosterPath();
             }
 
-            //Create images using Glide
-            Glide.with(context).load(imageURL).into(ivPoster);
+            //Create images using Glide; check out CodePath docs
+            // for API of Glide
+            // https://guides.codepath.org/android/Displaying-Images-with-the-Glide-Library#troubleshooting
+            int radius = 50;
+            int margin = 10;
+            Glide.with(context).load(imageURL).fitCenter().transform(new RoundedCornersTransformation(radius, margin)).into(ivPoster);
+
+            /*
+            Potentially I can use popularity and ratings_count below the poster (increase maxLines
+            for title and overview) with an icon of a person silouette and a thumbs up, respectively,
+            for using more of the movie attributes!
+             */
 
             rlContainer.setOnClickListener(new View.OnClickListener() {
                 @Override

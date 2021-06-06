@@ -9,7 +9,8 @@ If it does not appear, go into Project instead of Android in Project tab on left
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/rlContainer">
+    android:id="@+id/rlContainer"
+    android:background="#00246B">
     <!--Might need to change padding/margin on RelativeLayout-->
 
     <ImageView
@@ -32,6 +33,9 @@ If it does not appear, go into Project instead of Android in Project tab on left
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="0dp"
         android:layout_toEndOf="@+id/ivPoster"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/white"
         android:textSize="24sp"
         tools:text="Movie: The Movie" />
 
@@ -47,7 +51,8 @@ If it does not appear, go into Project instead of Android in Project tab on left
         android:layout_marginBottom="0dp"
         android:layout_toEndOf="@+id/ivPoster"
         android:ellipsize="end"
-        android:maxLines="7"
+        android:maxLines="6"
+        android:textColor="@color/white"
         android:textSize="16sp"
         tools:text="This is a movie where things occur and action ensues. People get hurt, there's some funny moments, and death might happen. That is always fun, innit?" />
 </RelativeLayout>
