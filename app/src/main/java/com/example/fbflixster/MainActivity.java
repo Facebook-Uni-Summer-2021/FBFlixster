@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
      */
     //This may need to be secret, check Hints in Week 1 Day 2
     private static final String TAG = "MainActivity";
-    public static String NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=";//2ab073f81ddbdbac6fe1df61563b9614
+    public static String NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=";
 
     List<Movie> movies;
 
@@ -104,3 +104,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
+
+/*
+The following are questions I had while working:
+    The ViewBind does not work; I added it into build.gradle(Module) and created test
+        activity, but I could not create the class explained in the CodePath docs
+    I could not get the YouTube player to work on emulator despite it saying
+        it supports it
+    An error occurs when creating a secret xml (I added it to git when I created the xml,
+        was that wrong?) and combining the url and api_key outside the async client call
+    How do you make the secret xml? See above question
+ */

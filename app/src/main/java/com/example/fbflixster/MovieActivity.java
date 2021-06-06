@@ -94,6 +94,8 @@ public class MovieActivity extends YouTubeBaseActivity {
                     YouTubePlayerView player = findViewById(R.id.player);
 
                     //Initialize player using API key
+                    //This is not secret in code, as Android Studio replaces the getString(...)
+                    // with the actual key in gray
                     player.initialize(getString(R.string.youtube_api_key),
                             new YouTubePlayer.OnInitializedListener() {
                                 @Override

@@ -14,7 +14,7 @@ import java.util.List;
 @Parcel
 public class Movie {
     //Make private TAG to test
-
+    private static final String TAG = "Movie";
     public static final String MOVIE_OBJECT = "movie_object";
 
     String posterPath;
