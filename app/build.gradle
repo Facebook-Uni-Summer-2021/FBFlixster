@@ -2,6 +2,11 @@ plugins {
     id 'com.android.application'
 }
 
+//Secret keys
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -9,11 +14,16 @@ android {
     //"Boiler plate" refers to segments of code that are repetitive
     // and tedious (such as binding widget variables to xml); ViewBinding
     // is designed to generate them automatically
-//    buildFeatures {
-//        viewBinding = true
-//    }
+    // Is this the correct "app/build.gradle file?"
+    buildFeatures {
+        viewBinding true
+    }
 
     defaultConfig {
+        //Secret keys
+        buildConfigField("String", "CONSUMER_KEY", apikeyProperties['CONSUMER_KEY'])
+        buildConfigField("String", "CONSUMER_SECRET", apikeyProperties['CONSUMER_SECRET'])
+
         applicationId "com.example.fbflixster"
         //Increased from 16 due to error; keep an eye out for any errors
         minSdkVersion 21

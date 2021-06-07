@@ -109,9 +109,15 @@ public class MainActivity extends AppCompatActivity {
 The following are questions I had while working:
     The ViewBind does not work; I added it into build.gradle(Module) and created test
         activity, but I could not create the class explained in the CodePath docs
+        FIXED? Make sure you sync, and to use the binding class type [layout]Binding, where layout
+        may be activity_test
     I could not get the YouTube player to work on emulator despite it saying
-        it supports it
+        it supports it...am I the only one?
+           I FIXED IT! Check manifest
     An error occurs when creating a secret xml (I added it to git when I created the xml,
         was that wrong?) and combining the url and api_key outside the async client call
-    How do you make the secret xml? See above question
+    How do you make the secret xml? See above question, or try the other way using .gitignore
+
+Later:
+    Can you place a new image on top of another? Refers to adding play button on top of poster
  */

@@ -92,6 +92,8 @@ public class MovieAdapter extends
         TextView tvTitle;
         TextView tvOverview;
         ImageView ivPoster;
+        TextView tvVoteAverage;
+        TextView tvVoteCount;
         RelativeLayout rlContainer;
 
         public ViewHolder(@NonNull View itemView) {
@@ -100,6 +102,8 @@ public class MovieAdapter extends
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
+            tvVoteAverage = itemView.findViewById(R.id.tvVoteAverage);
+            tvVoteCount = itemView.findViewById(R.id.tvVoteCount);
             rlContainer = itemView.findViewById(R.id.rlContainer);
         }
 
@@ -108,6 +112,9 @@ public class MovieAdapter extends
             if (movie.getVote_average() >= 6) {
                 tvTitle.setTextColor(Color.parseColor("#F0EA28"));
             }
+
+            tvVoteAverage.setText(String.valueOf(movie.getVote_average()));
+            tvVoteCount.setText(String.valueOf(movie.getVote_count()));
 
             tvOverview.setText(movie.getOverview());
             //QUESTION: where does this go?

@@ -23,6 +23,53 @@ If it does not appear, go into Project instead of Android in Project tab on left
         android:layout_marginBottom="0dp"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <!--Added-->
+
+
+    <ImageView
+        android:id="@+id/ivVoteAverage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivPoster"
+        android:layout_marginStart="6dp"
+        android:clickable="false"
+        app:srcCompat="@android:drawable/btn_star_big_off" />
+
+    <TextView
+        android:id="@+id/tvVoteAverage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivPoster"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/ivVoteAverage"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        tools:text="12345" />
+
+    <ImageView
+        android:id="@+id/ivVoteCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivPoster"
+        android:layout_toEndOf="@+id/tvVoteAverage"
+        android:layout_marginStart="6dp"
+        app:srcCompat="@android:drawable/ic_menu_view" />
+
+    <TextView
+        android:id="@+id/tvVoteCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivPoster"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/ivVoteCount"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        tools:text="12345" />
+
+    <!--Added-->
+
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
@@ -51,7 +98,7 @@ If it does not appear, go into Project instead of Android in Project tab on left
         android:layout_marginBottom="0dp"
         android:layout_toEndOf="@+id/ivPoster"
         android:ellipsize="end"
-        android:maxLines="6"
+        android:maxLines="8"
         android:textColor="@color/white"
         android:textSize="16sp"
         tools:text="This is a movie where things occur and action ensues. People get hurt, there's some funny moments, and death might happen. That is always fun, innit?" />

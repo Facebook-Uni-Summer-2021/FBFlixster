@@ -3,6 +3,7 @@ package com.example.fbflixster;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -39,7 +40,7 @@ public class MovieActivity extends YouTubeBaseActivity {
 
     Movie movie;
     List<Video> videos;
-    String videoId = "xxxx";//Set a placeholder
+    String videoId = "wtx0fdzRAp8";//Set a placeholder
 
     RatingBar rbMovieRating;
     TextView tvDetailedTitle;
@@ -140,6 +141,10 @@ public class MovieActivity extends YouTubeBaseActivity {
                 into(ivDetailedPoster);
 
         tvDetailedTitle.setText(movie.getTitle());
+        if (movie.getVote_average() >= 6) {
+            tvDetailedTitle.setTextColor(Color.parseColor("#F0EA28"));
+        }
+
         tvDetailedOverview.setText(movie.getOverview());
         tvRelease.setText("Release date: " + movie.getRelease_date());
         Glide.with(this).load(movie.getPosterPath()).into(ivDetailedPoster);
